@@ -1,0 +1,82 @@
+<div class="header">
+    {{ GetHeader() }}
+</div>
+
+<form
+    name="createeditform"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate
+>
+    <div class="form-group">
+        <label for="filename">File Name</label>
+        <input
+            type="text"
+            class="form-control"
+            name="filename"
+            [(ngModel)]="form.filename"
+            required
+            #filename="ngModel"
+            defaultValue="file?.Name"
+        />
+        <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="filename.errors && f.submitted"
+        >
+            File name is required!
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="author">Author</label>
+        <input
+            type="text"
+            class="form-control"
+            name="author"
+            [(ngModel)]="form.author"
+            required
+            #author="ngModel"
+        />
+        <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="author.errors && f.submitted"
+        >
+            Author name is required!
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input
+            type="text"
+            class="form-control"
+            name="description"
+            [(ngModel)]="form.description"
+            #description="ngModel"
+        />
+    </div>
+    <div class="form-group">
+        <label for="fileData">Upload your file</label>
+        <input
+            type="file"
+            class="form-control fileData"
+            name="fileData"
+            [(ngModel)]="form.fileData"
+            id="#fileUploader"
+            required
+            #fileData="ngModel"
+        />
+        <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="fileData.errors && f.submitted"
+        >
+            File is required!
+        </div>
+    </div>
+    <div class="form-group">
+    <button class="btn btn-primary btn-block">
+        Create
+    </button>
+    </div>
+</form>

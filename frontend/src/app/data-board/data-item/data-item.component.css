@@ -1,0 +1,35 @@
+.card {
+    padding: 10px;
+    max-width: 300px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 7px;
+}
+.name {
+    font-weight: bold;
+    font-size: 18px;
+}
+.edit {
+    font-size: 12px;
+    text-decoration: underline;
+    color: #964af8;
+    cursor: pointer;
+}
+.edit:hover {
+    text-decoration: none;
+}
+
+.author {
+    color: #999999;
+    font-size: 12px;
+    text-align: right;
+}
+
+.description {
+    color: #555555;
+}

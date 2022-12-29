@@ -1,1 +1,23 @@
-<p>data-list works!</p>
+<div class="header">
+    <div class="left">
+        <div class="name">Your files</div>
+        <div class="button" (click)="openDialog()">
+            <div class="plus">+</div>
+
+            Add new file
+        </div>
+    </div>
+    <div class="search">
+        <div class="searchtext">Search</div>
+        <input
+            [ngModel]="searchText" (ngModelChange)="searchOnChange($event)"
+            />
+    </div>
+</div>
+
+<div class="itemsList">
+    <div *ngFor="let file of searchedFiles">
+        <app-data-item [file]="file" (onEditClick)="onEdit($event)"></app-data-item>
+    </div>
+</div>
+  

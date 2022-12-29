@@ -1,1 +1,12 @@
-<p>data-item works!</p>
+<div class="card">
+    <div class="header">
+        <div class="name">{{ file.Name }}</div>
+        <div class="edit" (click)="onEdit()">edit</div>
+    </div>
+    <div class="author">
+        {{ file.Author }}
+    </div>
+    <div class="description">
+        {{ file.Description }}
+    </div>
+</div>

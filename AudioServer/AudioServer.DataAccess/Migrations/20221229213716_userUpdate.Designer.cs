@@ -3,6 +3,7 @@ using System;
 using AudioServer.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AudioServer.DataAccess.Migrations
 {
     [DbContext(typeof(AudioServerDBContext))]
-    partial class AudioServerDBContextModelSnapshot : ModelSnapshot
+    [Migration("20221229213716_userUpdate")]
+    partial class userUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

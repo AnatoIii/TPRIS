@@ -67,6 +67,7 @@ namespace AudioServer.Service
             User newUser = new User()
             {
                 UserName = registerTo.UserName,
+                Email = registerTo.Email,
                 PasswordSalt = Convert.ToBase64String(passwordSalt),
                 PasswordHash = passwordHash
             };

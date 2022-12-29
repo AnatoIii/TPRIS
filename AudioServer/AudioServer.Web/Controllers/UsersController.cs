@@ -30,7 +30,7 @@ namespace AudioServer.Web.Controllers
         {
             await _userAuthService.Register(registerTo);
 
-            return CreatedAtAction(nameof(_userAuthService.Register), registerTo.UserName);
+            return Ok();
         }
 
         [HttpGet("{userId}")]

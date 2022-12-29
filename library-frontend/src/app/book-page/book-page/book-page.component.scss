@@ -1,0 +1,105 @@
+@import '../../../styles/variables.scss'; 
+
+.book-page {
+    width: 100%;
+    padding: 30px 3%;
+    height: calc(100vh - 75px);
+    background: var(--pageBackground);
+
+    > div {
+        display: flex;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .toChat {
+        color: var(--darkTextColor);
+        text-decoration: underline;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.book-picture {
+    width: 30%;
+    padding-right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    img {
+        width: 100%;
+        border-radius: 3px;
+    }
+}
+
+.book-data {
+    background-color: var(--formsBackground);
+    width: 70%;
+    padding: 20px;
+    height: fit-content;
+    border-radius: 3px;
+
+    .title {
+        font-size: 30px;
+        color: var(--mainTextColor);
+        margin-bottom: 10px;
+    }
+
+    .metadata {
+        display: flex;
+        margin-bottom: 15px;
+
+        .author, .genres {
+            color: var(--textColor);
+            padding-right: 30px;
+
+            a {
+                color: #41739b;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+
+        .genres {
+            span {
+                cursor: pointer;
+                display: inline-block;
+                margin: 0 3px;
+                padding: 0 5px;
+                color: var(--textColor);
+                border-radius: 3px;
+                background: var(--accentBackground);
+
+                &:hover {
+                    background: var(--textColor);
+                    color: var(--accentBackground);
+                }
+            }
+        }
+    }
+
+    .description {
+        color: var(--accentTextColor);
+        font-size: 16px;
+        line-height: 1.88;
+
+        .initial-letter {
+            float: left;
+            margin: 0.05em 10px 0 0;
+            font-weight: 700;
+            font-size: 3.4em;
+            line-height: 1;
+            color: #006cc4;
+            text-transform: uppercase;
+            font-style: normal;
+            font-family: "Noto Serif", "Times New Roman", Times, Baskerville, Georgia, serif;
+        }
+    }
+}

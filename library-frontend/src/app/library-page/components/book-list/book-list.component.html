@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="header-line">
+        <div class="name">
+            <div class="title">
+                Books list
+            </div>
+            <div class="add_button" (click)="addBook()">
+                <mat-icon matPrefix size="small">add</mat-icon>
+                Add 
+            </div>
+        </div>
+
+        <div class="search-box">
+            <mat-icon matPrefix size="small">search</mat-icon>
+            <input placeholder="Search for books" [ngModel]="searchBookName" (ngModelChange)="bookNameChange($event)">
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="book-list">
+        <div class="books">
+            <app-book-item *ngFor="let book of bookList" [book]="book"></app-book-item>
+        </div>
+        <div class="search-data">
+            <div class="author">
+                <div class="seach-name">
+                    Author
+                    <input placeholder="Search for author" [ngModel]="authorName" (ngModelChange)="authorNameChange($event)">
+                </div>
+            </div>
+            <div class="genres" *ngIf="genres?.length > 0">
+                <div class="seach-name">
+                    Genres
+                </div>
+                <div class="genres-list">
+                    <div class="genre-name" *ngFor="let genre of genres">
+                        <input type="checkbox" (click)="checkGenre(genre.genreId)" [checked]="activeGenre(genre.genreId)">
+                            {{ genre.genreName }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pages">
+        <!-- Total found {{ booksCount }} books -->
+        <div class="page-number" *ngFor="let page of getPagesArray()" (click)="selectPage(page)" [ngClass]="{'active': currentPage == page}">
+            {{ page }}
+        </div>
+    </div>
+</div>

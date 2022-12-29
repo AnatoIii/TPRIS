@@ -1,0 +1,42 @@
+<div class="header">
+    Add book
+</div>
+<div class="line"></div>
+
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="title" class="formText">Title</label>
+        <input class="form-control" id="title" type="text" formControlName="title" placeholder="Title">
+        <div *ngIf="bookForm.controls.title.touched && bookForm.controls.title.invalid" class="error">* Book title should be at least 3 symols length</div>
+    </div>
+
+    <div class="form-group">
+        <label for="description" class="formText">Description</label>
+        <input class="form-control" id="description" type="text" formControlName="description" placeholder="Description">
+        <div *ngIf="bookForm.controls.description.touched && bookForm.controls.description.invalid" class="error">* Description should be at least 10 symols length</div>
+    </div>
+
+    <div class="form-group">
+        <label for="author" class="formText">Author</label>
+        <input class="form-control" id="author" type="text" formControlName="author" placeholder="Author">
+        <div *ngIf="bookForm.controls.author.touched && bookForm.controls.author.invalid" class="error">* Author name should be at least 3 symols length</div>
+    </div>
+
+    <div class="form-group">
+        <label for="imageLink" class="formText">Image Link</label>
+        <input class="form-control" id="imageLink" type="text" formControlName="imageLink" placeholder="Image link">
+        <div *ngIf="bookForm.controls.imageLink.touched && bookForm.controls.imageLink.invalid" class="error">* Image link should be at least 3 symols length</div>
+    </div>
+
+    <!-- <label for="imageLink" class="formText genres">Genres</label> -->
+    <mat-form-field appearance="fill" [formGroup]="bookForm" class="genres-field">
+        <mat-label>Genres</mat-label>
+        <mat-select formControlName="genres" placeholder="Genres" multiple>
+            <mat-option *ngFor="let genre of genresList" [value]="genre.genreId">{{ genre.genreName }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="button_container">
+        <button type="submit" class="add_book_button">Add</button>
+    </div>
+</form>

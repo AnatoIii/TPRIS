@@ -1,0 +1,30 @@
+version: "3.3"
+services:
+    db:
+        image: postgres:11
+        container_name: libdb
+        ports:
+            - 5433:5432
+        environment:
+            POSTGRES_PASSWORD: openlibrary
+            POSTGRES_USER: openlibrary
+            PGDATA : /var/lib/postgresql/data
+        volumes:
+            - data:/var/lib/postgresql/data
+    front-end:
+        build: .
+        container_name: front-end
+        tty: true
+        ports:
+            - 10010:80
+    service:
+        container_name: service
+        tty: true
+        build: OpenLibraryServer
+        ports: 
+            - 5100:5000
+            - 5101:5001
+    
+volumes: 
+    data: 
+        driver: local   

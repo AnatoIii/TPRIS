@@ -1,0 +1,60 @@
+.book-page {
+  width: 100%;
+  padding: 30px 3%;
+  height: calc(100vh - 75px);
+  background: #1e1e1e;
+  display: flex;
+}
+
+.book-picture {
+  width: 30%;
+  padding-right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.book-picture img {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.book-data {
+  background-color: #303030;
+  width: 70%;
+  padding: 20px;
+  height: fit-content;
+  border-radius: 3px;
+}
+.book-data .title {
+  font-size: 30px;
+  color: #f0f0f0;
+  margin-bottom: 10px;
+}
+.book-data .metadata {
+  display: flex;
+  margin-bottom: 15px;
+}
+.book-data .metadata .author, .book-data .metadata .genres {
+  color: #cccccc;
+  padding-right: 30px;
+}
+.book-data .metadata .author a, .book-data .metadata .genres a {
+  color: #41739b;
+  text-decoration: none;
+}
+.book-data .description {
+  color: white;
+  font-size: 16px;
+  line-height: 1.88;
+}
+.book-data .description .initial-letter {
+  float: left;
+  margin: 0.05em 10px 0 0;
+  font-weight: 700;
+  font-size: 3.4em;
+  line-height: 1;
+  color: #006cc4;
+  text-transform: uppercase;
+  font-style: normal;
+  font-family: "Noto Serif", "Times New Roman", Times, Baskerville, Georgia, serif;
+}

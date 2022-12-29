@@ -1,0 +1,32 @@
+<div class="book-page">
+    <div *ngIf="book">
+        <div class="book-picture">
+            <img src="{{ book.imageLink }}">
+        </div>
+        <div class="book-data">
+            <div class="header">
+                <div class="title">
+                    {{ book.title }}
+                </div>
+                <div class="toChat" (click)="goToChat($event)">
+                    to chat
+                </div>
+            </div>
+            <div class="metadata">
+                <div class="author">
+                    Author: <a (click)="searchByAuthor()"> {{ book.author }} </a>
+                </div>
+                <div class="genres">
+                    Genres: 
+                    <span (click)="searchByGenre(genre.genreId)" *ngFor="let genre of book.genres">
+                        {{ genre.genreName }}
+                    </span>
+                </div>
+            </div>
+            <div class="description">
+                <span class="initial-letter">{{ firstLetter() }}</span>
+                {{ description() }}
+            </div>
+        </div>
+    </div>
+</div>

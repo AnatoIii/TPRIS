@@ -1,0 +1,16 @@
+<div class="book" (click)="openBook()">
+    <div class="toChat" (click)="goToChat($event)">
+        To chat
+    </div>
+    <div class="image">
+        <img src="{{ book.imageLink }}">
+    </div>
+    <div class="data">
+        <div class="name">
+            {{ book.title }}
+        </div>
+        <div class="description">
+            {{ book.description }}
+        </div>
+    </div>
+</div>

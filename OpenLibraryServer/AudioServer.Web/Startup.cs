@@ -83,6 +83,8 @@ namespace AudioServer.Web
                     };
                 });
 
+            services.AddHttpContextAccessor();
+
             services.AddMvc();
             services.AddSignalR();
             services.AddCors(options =>

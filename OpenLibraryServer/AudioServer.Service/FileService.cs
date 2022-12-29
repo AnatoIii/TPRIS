@@ -3,8 +3,10 @@ using AudioServer.Models;
 using AudioServer.Models.DTOs;
 using AudioServer.Service.Exceptions;
 using AudioServer.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace AudioServer.Services
@@ -13,20 +15,35 @@ namespace AudioServer.Services
     {
         private readonly AudioServerDBContext _dbContext;
         private readonly IFileServerClient _fileServerClient;
-        public FileService(AudioServerDBContext dbContext, IFileServerClient client)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public FileService(AudioServerDBContext dbContext, IFileServerClient client, IHttpContextAccessor httpContextAccessor)
         {
             _dbContext = dbContext;
             _fileServerClient = client;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<FileEntity> AddFile(CreateEditFileTO fileToCreate)
         {
+            string fileURL = await _fileServerClient.AddFile(fileToCreate.Base64File, fileToCreate.Name);
 
+            FileEntity newFile = new()
+            {
+                Name = fileToCreate.Name,
+                Author = fileToCreate.Author,
+                Description = fileToCreate.Description,
+                FileURL = fileURL,
+            };
 
-            //await _dbContext.Files.AddAsync(newFile);
-            //await _dbContext.SaveChangesAsync();
+            var user = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            return null;
+            ////////newFile.CreatorId = user.ToGuid();
+
+            await _dbContext.Files.AddAsync(newFile);
+            await _dbContext.SaveChangesAsync();
+
+            return newFile;
+
         }
 
         public async Task<FileEntity> EditFile(CreateEditFileTO newFile)

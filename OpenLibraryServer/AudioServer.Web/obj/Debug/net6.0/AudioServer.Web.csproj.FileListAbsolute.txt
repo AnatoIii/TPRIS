@@ -1,6 +1,0 @@
-C:\Users\Danylo\Desktop\Sharaga 11 Term\Telenik\OpenLibraryServer\AudioServer.Web\obj\Debug\net6.0\AudioServer.Web.csproj.AssemblyReference.cache
-C:\Users\Danylo\Desktop\Sharaga 11 Term\Telenik\OpenLibraryServer\AudioServer.Web\obj\Debug\net6.0\AudioServer.Web.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Danylo\Desktop\Sharaga 11 Term\Telenik\OpenLibraryServer\AudioServer.Web\obj\Debug\net6.0\AudioServer.Web.AssemblyInfoInputs.cache
-C:\Users\Danylo\Desktop\Sharaga 11 Term\Telenik\OpenLibraryServer\AudioServer.Web\obj\Debug\net6.0\AudioServer.Web.AssemblyInfo.cs
-C:\Users\Danylo\Desktop\Sharaga 11 Term\Telenik\OpenLibraryServer\AudioServer.Web\obj\Debug\net6.0\AudioServer.Web.csproj.CoreCompileInputs.cache
-C:\Users\Danylo\Desktop\Sharaga 11 Term\Telenik\OpenLibraryServer\AudioServer.Web\obj\Debug\net6.0\AudioServer.Web.MvcApplicationPartsAssemblyInfo.cache

@@ -22,6 +22,34 @@ export class DataListComponent implements OnInit {
         Author: 'Author 1',
         Content: 'asdasdasd',
         Description: 'DEsctipadhasd'
+      },
+      {
+        Id: 1,
+        Name: 'File 1',
+        Author: 'Author 1',
+        Content: 'asdasdasd',
+        Description: 'DEsctipadhasd'
+      },
+      {
+        Id: 1,
+        Name: 'File 1',
+        Author: 'Author 1',
+        Content: 'asdasdasd',
+        Description: 'DEsctipadhasd'
+      },
+      {
+        Id: 1,
+        Name: 'File 1',
+        Author: 'Author 1',
+        Content: 'asdasdasd',
+        Description: 'DEsctipadhasd'
+      },
+      {
+        Id: 1,
+        Name: 'File 1',
+        Author: 'Author 1',
+        Content: 'asdasdasd',
+        Description: 'DEsctipadhasd'
       }
     ]
     this.searchedFiles = this.files;

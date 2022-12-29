@@ -15,7 +15,9 @@
     </div>
 </div>
 
-<div *ngFor="let file of searchedFiles">
-    <app-data-item [file]="file" (onEditClick)="onEdit($event)"></app-data-item>
+<div class="itemsList">
+    <div *ngFor="let file of searchedFiles">
+        <app-data-item [file]="file" (onEditClick)="onEdit($event)"></app-data-item>
+    </div>
 </div>
   

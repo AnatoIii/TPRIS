@@ -17,7 +17,6 @@
             [(ngModel)]="form.filename"
             required
             #filename="ngModel"
-            defaultValue="file?.Name"
         />
         <div
             class="alert alert-danger"
@@ -55,7 +54,7 @@
             #description="ngModel"
         />
     </div>
-    <div class="form-group">
+    <div class="form-group" *ngIf="isCreate">
         <label for="fileData">Upload your file</label>
         <input
             type="file"

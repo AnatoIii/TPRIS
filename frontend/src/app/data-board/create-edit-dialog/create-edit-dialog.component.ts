@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { DialogConfig } from 'src/app/dialog/dialog-config';
 import { DialogRef } from 'src/app/dialog/dialog-ref';
 import { SystemFile } from 'src/app/_models/SystemFile';
@@ -27,6 +28,12 @@ export class CreateEditDialogComponent implements OnInit {
   ngOnInit(): void {
     this.file = this.config.data.file;
     this.isCreate = this.config.data.isCreate;
+
+    if (!this.isCreate) {
+      this.form.filename = this.file.Name;
+      this.form.description = this.file.Description;
+      this.form.author = this.file.Author;
+    }
   }
 
   GetHeader(): string {

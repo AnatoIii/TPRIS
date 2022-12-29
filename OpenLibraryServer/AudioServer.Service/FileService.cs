@@ -23,8 +23,10 @@ namespace AudioServer.Services
         {
 
 
-            await _dbContext.Files.AddAsync(newFile);
-            await _dbContext.SaveChangesAsync();
+            //await _dbContext.Files.AddAsync(newFile);
+            //await _dbContext.SaveChangesAsync();
+
+            return null;
         }
 
         public async Task<FileEntity> EditFile(CreateEditFileTO newFile)

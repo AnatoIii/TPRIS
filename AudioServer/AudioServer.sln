@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AudioServer.Services", "Aud
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AudioServer.DataAccess", "AudioServer.DataAccess\AudioServer.DataAccess.csproj", "{8683A3C8-2B2D-4A3E-BFCB-611D7C76C355}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioServer.FileServer", "AudioServer.FileServer\AudioServer.FileServer.csproj", "{40E142A6-DC5B-49CF-A3FC-D051C8C1003B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AudioServer.FileServer", "AudioServer.FileServer\AudioServer.FileServer.csproj", "{40E142A6-DC5B-49CF-A3FC-D051C8C1003B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioServer.Infrastructure", "AudioServer.Infrastructure\AudioServer.Infrastructure.csproj", "{9026994E-8959-48C5-80CA-FB7ABEF74D48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{40E142A6-DC5B-49CF-A3FC-D051C8C1003B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40E142A6-DC5B-49CF-A3FC-D051C8C1003B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40E142A6-DC5B-49CF-A3FC-D051C8C1003B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9026994E-8959-48C5-80CA-FB7ABEF74D48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9026994E-8959-48C5-80CA-FB7ABEF74D48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9026994E-8959-48C5-80CA-FB7ABEF74D48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9026994E-8959-48C5-80CA-FB7ABEF74D48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

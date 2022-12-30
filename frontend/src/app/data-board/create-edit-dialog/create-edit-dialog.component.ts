@@ -30,18 +30,22 @@ export class CreateEditDialogComponent implements OnInit {
     this.isCreate = this.config.data.isCreate;
 
     if (!this.isCreate) {
-      this.form.filename = this.file.Name;
-      this.form.description = this.file.Description;
-      this.form.author = this.file.Author;
+      this.form.filename = this.file.name;
+      this.form.description = this.file.description;
+      this.form.author = this.file.author;
     }
   }
 
   GetHeader(): string {
-    return this.isCreate ? 'Add new file' : `Edit file '${this.file.Name}'`
+    return this.isCreate ? 'Add new file' : `Edit file '${this.file.name}'`
   }
 
   onSubmit(): void {
-    
+    if (!this.isCreate) {
+      this.sendFile();
+      return;
+    }
+
     var file = (document.getElementById('#fileUploader') as any).files[0];
     var reader = new FileReader();
     reader.readAsText(file, "UTF-8");
@@ -58,16 +62,22 @@ export class CreateEditDialogComponent implements OnInit {
     const { filename, author, description } = this.form;
 
     var file: SystemFile = {
-      Id: this.isCreate ? undefined : this.file.Id,
-      Name: filename,
-      Description: description,
-      Author: author,
-      Content: this.isCreate ? fileData : undefined
+      fileId: this.isCreate ? undefined : this.file.fileId,
+      name: filename,
+      description: description,
+      author: author,
+      content: this.isCreate ? fileData : undefined
     };
 
-    this.boardService.sendFile(file).subscribe((res: any) => {
-
-    });
-    this.dialog.close();
+    if (this.isCreate) {
+      this.boardService.createFile(file).subscribe((res: any) => {
+        this.dialog.close(true);
+      });
+    }
+    else {
+      this.boardService.editFile(file).subscribe((res: any) => {
+        this.dialog.close(true);
+      });
+    }
   }
 }

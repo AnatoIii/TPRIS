@@ -27,4 +27,8 @@ export class AuthService {
       password
     }, httpOptions);
   }
+
+  getUser() {
+    return this.http.get(API_URL + 'users', {});
+  }
 }

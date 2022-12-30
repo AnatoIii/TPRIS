@@ -1,7 +1,7 @@
 export interface SystemFile {
-    Id?: number;
-    Name?: string;
-    Author?: string;
-    Content?: string;
-    Description?: string;
+    fileId?: number;
+    name?: string;
+    author?: string;
+    content?: string;
+    description?: string;
 } 

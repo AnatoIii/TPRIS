@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from 'src/app/dialog/dialog.service';
 import { SystemFile } from 'src/app/_models/SystemFile';
+import { BoardService } from 'src/app/_services/board.service';
 import { CreateEditDialogComponent } from '../create-edit-dialog/create-edit-dialog.component';
 
 @Component({
@@ -12,47 +13,18 @@ export class DataListComponent implements OnInit {
   files: SystemFile[] = []
   searchedFiles: SystemFile[] = []
   searchText = ''
-  constructor(public dialog: DialogService) { }
+  constructor(public dialog: DialogService, public boardService: BoardService) { }
 
   ngOnInit(): void {
-    this.files = [
-      {
-        Id: 1,
-        Name: 'File 1',
-        Author: 'Author 1',
-        Content: 'asdasdasd',
-        Description: 'DEsctipadhasd'
-      },
-      {
-        Id: 1,
-        Name: 'File 1',
-        Author: 'Author 1',
-        Content: 'asdasdasd',
-        Description: 'DEsctipadhasd'
-      },
-      {
-        Id: 1,
-        Name: 'File 1',
-        Author: 'Author 1',
-        Content: 'asdasdasd',
-        Description: 'DEsctipadhasd'
-      },
-      {
-        Id: 1,
-        Name: 'File 1',
-        Author: 'Author 1',
-        Content: 'asdasdasd',
-        Description: 'DEsctipadhasd'
-      },
-      {
-        Id: 1,
-        Name: 'File 1',
-        Author: 'Author 1',
-        Content: 'asdasdasd',
-        Description: 'DEsctipadhasd'
-      }
-    ]
-    this.searchedFiles = this.files;
+    this.loadAllFiles();
+  }
+
+  loadAllFiles() {
+    this.boardService.getAllFiles().subscribe(data => {
+      console.log(data);
+      this.files = data;
+      this.searchedFiles = this.files;
+    });
   }
 
   openDialog() {
@@ -60,11 +32,14 @@ export class DataListComponent implements OnInit {
 
     ref.afterClosed.subscribe(result => {
       console.log('Dialog closed', result);
+      if (result) {
+        this.loadAllFiles();
+      }
     });
   }
 
   onEdit(item: number) {
-    const activeFile = this.files.filter(el => el.Id === item)[0];
+    const activeFile = this.files.filter(el => el.fileId === item)[0];
     console.log(activeFile);
     const ref = this.dialog.open(CreateEditDialogComponent, {
       data: { isCreate: false, file: activeFile }
@@ -72,16 +47,18 @@ export class DataListComponent implements OnInit {
 
     ref.afterClosed.subscribe(result => {
       console.log('Dialog closed', result);
+      if (result) {
+        this.loadAllFiles();
+      }
     });
-    console.log(item);
   }
 
   searchOnChange(text: string) {
     const searchText = text.toLowerCase();
 
     this.searchedFiles = this.files.filter(el => 
-      el.Name?.toLowerCase().includes(searchText)
-      || el.Author?.toLowerCase().includes(searchText)
-      || el.Description?.toLowerCase().includes(searchText))
+      el.name?.toLowerCase().includes(searchText)
+      || el.author?.toLowerCase().includes(searchText)
+      || el.description?.toLowerCase().includes(searchText))
   }
 }

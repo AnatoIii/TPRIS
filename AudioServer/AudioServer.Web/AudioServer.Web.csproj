@@ -22,6 +22,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\AudioServer.DataAccess\AudioServer.DataAccess.csproj" />
+      <ProjectReference Include="..\AudioServer.Infrastructure\AudioServer.Infrastructure.csproj" />
       <ProjectReference Include="..\AudioServer.Service\AudioServer.Services.csproj" />
     </ItemGroup>
 

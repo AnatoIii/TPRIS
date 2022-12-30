@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Infrastructure.InfrastructureCommandDecorators
 {
     /// <summary>
-    /// Command decorator for saving changes in <see cref="GameSalesContext"/>
+    /// Command decorator for saving changes in <see cref="AudioServerDBContext"/>
     /// </summary>
     /// <typeparam name="TIn">TIn</typeparam>
     /// <typeparam name="TOut">TOut, can be used like additional output type in <see cref="CommandHandlerDecoratorBase{TIn, TOut}.Handle(TIn)"</typeparam>

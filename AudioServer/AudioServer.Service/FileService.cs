@@ -5,7 +5,9 @@ using AudioServer.Service.Exceptions;
 using AudioServer.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -35,15 +37,19 @@ namespace AudioServer.Services
                 FileURL = fileURL,
             };
 
-            var user = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-            ////////newFile.CreatorId = user.ToGuid();
+            newFile.CreatorId = GetUserId();
 
             await _dbContext.Files.AddAsync(newFile);
             await _dbContext.SaveChangesAsync();
 
             return newFile;
 
+        }
+
+        private Guid GetUserId()
+        {
+            var user = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return Guid.Parse(user);
         }
 
         public async Task<FileEntity> EditFile(CreateEditFileTO newFile)
@@ -56,7 +62,7 @@ namespace AudioServer.Services
                 // first check if any field changed.
                 if (result.Name != newFile.Name 
                     || result.Author != newFile.Author
-                    || result.Description != result.Description) 
+                    || result.Description != newFile.Description) 
                 {
                     result.Name = newFile.Name;
                     result.Author = newFile.Author;
@@ -66,15 +72,15 @@ namespace AudioServer.Services
                 }
 
                 // check that content changed -> update.
-                string currentFileContent = await _fileServerClient.ReadFile(result.Name);
-                if (currentFileContent != newFile.Base64File) 
-                {
-                    string fileURL = await _fileServerClient.AddFile(newFile.Base64File, newFile.Name);
+                //string currentFileContent = await _fileServerClient.ReadFile(result.Name);
+                //if (currentFileContent != newFile.Base64File) 
+                //{
+                //    string fileURL = await _fileServerClient.AddFile(newFile.Base64File, newFile.Name);
                     
-                    result.FileURL = fileURL;
+                //    result.FileURL = fileURL;
 
-                    updateNeeded = true;
-                }
+                //    updateNeeded = true;
+                //}
 
                 if (updateNeeded)
                 {
@@ -90,7 +96,11 @@ namespace AudioServer.Services
 
         public async Task<IEnumerable<FileEntity>> GetAll()
         {
-            List<FileEntity> allFiles = await _dbContext.Files.ToListAsync();
+            var currentUserId = GetUserId();
+
+            List<FileEntity> allFiles = await _dbContext.Files
+                .Where(el => el.CreatorId == currentUserId)
+                .OrderBy(el => el.FileId).ToListAsync();
 
             return allFiles;
         }

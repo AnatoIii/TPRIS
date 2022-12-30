@@ -26,7 +26,7 @@ namespace AudioServer.Web.Controllers
             return result;
         }
 
-        [HttpPost]
+        [HttpPut]
         public async Task<FileEntity> EditFile([FromBody] CreateEditFileTO newFile)
         {
             FileEntity result = await _fileService.EditFile(newFile);

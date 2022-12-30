@@ -15,6 +15,6 @@ export class DataItemComponent implements OnInit {
   }
 
   onEdit() {
-    this.onEditClick.emit(this.file.Id);
+    this.onEditClick.emit(this.file.fileId);
   }
 }

@@ -9,11 +9,11 @@ namespace AudioServer.Web.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class BooksController : Controller
+    public class FilesController : Controller
     {
         private readonly IFileService _fileService;
 
-        public BooksController(IFileService fileService)
+        public FilesController(IFileService fileService)
         {
             _fileService = fileService;
         }

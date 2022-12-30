@@ -46,7 +46,7 @@ namespace AudioServer.Service
             {
                 RefreshToken = tokenTO.RefreshToken,
                 User = user,
-                DueDate = DateTime.Now.AddMinutes(_tokenHelpers.GetTokenConfig().RefreshTokenLifetime)
+                DueDate = DateTime.UtcNow.AddMinutes(_tokenHelpers.GetTokenConfig().RefreshTokenLifetime)
             };
 
             await _dbContext.Tokens.AddAsync(dbToken);
@@ -81,7 +81,7 @@ namespace AudioServer.Service
             var accessToken = _tokenHelpers.CreateJWT(user);
             var refreshTokenValue = _tokenHelpers.GenerateRefreshToken();
 
-            return new TokenTO() { AccessToken = accessToken, RefreshToken = refreshTokenValue };
+            return new TokenTO() { AccessToken = accessToken, RefreshToken = refreshTokenValue, User = user };
         }
 
         private async Task<User> _GetDBUser(Guid userId)

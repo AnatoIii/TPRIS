@@ -4,5 +4,7 @@ namespace AudioServer.Models.DTOs
     {
         public string RefreshToken { get; set; }
         public string AccessToken { get; set; }
+
+        public User User { get; set; }
     }
 }

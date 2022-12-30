@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +13,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 
-import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { AuthInterceptor } from './_helpers/auth.interceptor';
 import { DataBoardModule } from './data-board/data-board.module';
 import { DialogModule } from './dialog/dialog.module';
 
@@ -36,7 +36,9 @@ import { DialogModule } from './dialog/dialog.module';
     DataBoardModule,
     DialogModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

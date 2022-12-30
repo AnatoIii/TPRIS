@@ -2,6 +2,9 @@ using AudioServer.Models.DTOs;
 using AudioServer.Service.HelperFunctions;
 using AudioServer.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AudioServer.Web.Controllers
@@ -30,15 +33,19 @@ namespace AudioServer.Web.Controllers
         {
             await _userAuthService.Register(registerTo);
 
-            return CreatedAtAction(nameof(_userAuthService.Register), registerTo.UserName);
+            return Ok(registerTo.UserName);
         }
 
-        [HttpGet("{userId}")]
-        public async Task<UserTO> GetById([FromRoute] string userId)
+        [HttpGet]
+        public async Task<UserTO> GetById()
         {
-            var guid = EntityHelpers.TryParseGuid(userId);
+            //var token = Request.Headers["authorization"][0];
+            //var handler = new JwtSecurityTokenHandler();
+            //var jwtSecurityToken = handler.ReadJwtToken(token);
 
-            return await _userAuthService.GetUserById(guid);
+            //var guid = jwtSecurityToken.Claims.ToList()[0];
+            var guid = HttpContext.User.Identities.First().Claims.ToList()[0].Value;
+            return await _userAuthService.GetUserById(Guid.Parse(guid));
         }
     }
 }

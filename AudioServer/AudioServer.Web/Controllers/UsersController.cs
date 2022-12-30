@@ -33,7 +33,7 @@ namespace AudioServer.Web.Controllers
         {
             await _userAuthService.Register(registerTo);
 
-            return Ok(registerTo.UserName);
+            return Ok();
         }
 
         [HttpGet]

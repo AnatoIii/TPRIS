@@ -37,19 +37,12 @@ namespace AudioServer.Services
                 FileURL = fileURL,
             };
 
-            newFile.CreatorId = GetUserId();
+            newFile.CreatorId = _GetUserId();
 
             await _dbContext.Files.AddAsync(newFile);
             await _dbContext.SaveChangesAsync();
 
             return newFile;
-
-        }
-
-        private Guid GetUserId()
-        {
-            var user = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return Guid.Parse(user);
         }
 
         public async Task<FileEntity> EditFile(CreateEditFileTO newFile)
@@ -96,13 +89,19 @@ namespace AudioServer.Services
 
         public async Task<IEnumerable<FileEntity>> GetAll()
         {
-            var currentUserId = GetUserId();
+            var currentUserId = _GetUserId();
 
             List<FileEntity> allFiles = await _dbContext.Files
                 .Where(el => el.CreatorId == currentUserId)
                 .OrderBy(el => el.FileId).ToListAsync();
 
             return allFiles;
+        }
+
+        private Guid _GetUserId()
+        {
+            var user = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return Guid.Parse(user);
         }
     }
 }

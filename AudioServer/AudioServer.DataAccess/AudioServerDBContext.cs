@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using AudioServer.Models;
+using System.Linq;
 
 namespace AudioServer.DataAccess
 {
@@ -9,7 +10,25 @@ namespace AudioServer.DataAccess
         public DbSet<User> Users { get; set; }
         public DbSet<Token> Tokens { get; set; }
 
+        /// <summary>
+        /// Default ctor
+        /// </summary>
+        /// <param name="options"><see cref="DbContextOptions{TContext}"/></param>
         public AudioServerDBContext(DbContextOptions options) : base(options)
         { }
+        
+        /// <summary>
+        /// Default ctor
+        /// </summary>
+        /// <param name="options"><see cref="DbContextOptions{TContext}"/></param>
+        /// <param name="inMemory">Use inMemory DB</param>
+        public AudioServerDBContext(DbContextOptions<AudioServerDBContext> options, bool inMemory = false)
+            : base(options)
+        {
+            if (!inMemory && Database.GetPendingMigrations().Count() > 0)
+            {
+                Database.Migrate();
+            }
+        }
     }
 }

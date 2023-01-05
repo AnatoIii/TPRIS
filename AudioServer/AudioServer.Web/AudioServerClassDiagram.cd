@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="AudioServer.Models.FileEntity">
+    <Position X="2.75" Y="1" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AudioServer.Models.DTOs.CreateEditFileTO">
+    <Position X="4.75" Y="1" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AudioServer.Models.DTOs.LoginTO">
+    <Position X="6.75" Y="1" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AudioServer.Models.DTOs.RegisterTO">
+    <Position X="8.75" Y="1" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AudioServer.Models.DTOs.SaveFileTO">
+    <Position X="6.75" Y="3" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AudioServer.Models.DTOs.TokenTO">
+    <Position X="4.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AudioServer.Models.DTOs.UserTO">
+    <Position X="8.75" Y="3.25" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AudioServer.Models.Hosts">
+    <Position X="14" Y="3.75" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AudioServer.Models.Token">
+    <Position X="11.75" Y="1" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AudioServer.Models.TokenConfig">
+    <Position X="11.75" Y="3.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AudioServer.Models.User">
+    <Position X="24.75" Y="11" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AudioServer.DataAccess.AudioServerDBContext">
+    <Position X="13.5" Y="8.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AudioServer.Web.Features.AccountManagement.AccountController">
+    <Position X="16" Y="8.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEBAAAAAAAAAEgAAAAAAAAA=</HashCode>
+      <FileName>Features\AccountManagement\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioServer.Web.Features.Authorization.AuthController">
+    <Position X="17.75" Y="15" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAACAAAAAAAIAAAAAAAAIAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Features\Authorization\AuthController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioServer.Web.Controllers.FilesController">
+    <Position X="6.5" Y="9.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAQAAAAAAAAEAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Controllers\FilesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioServer.Web.Features.AccountManagement.Queries.GetAllUsersQuery">
+    <Position X="26.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Features\AccountManagement\Queries\GetAllUsersQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AudioServer.Web.Features.AccountManagement.Queries.GetUserQuery">
+    <Position X="24.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Features\AccountManagement\Queries\GetUserQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AudioServer.Web.Features.AccountManagement.QueryHandlers.GetAllUsersQueryHandler">
+    <Position X="19.75" Y="11.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Features\AccountManagement\QueryHandlers\GetAllUsersQueryHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioServer.Web.Features.AccountManagement.QueryHandlers.GetUserQueryHandler">
+    <Position X="15.75" Y="11.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABABAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Features\AccountManagement\QueryHandlers\GetUserQueryHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Infrastructure.HandlerBase.QueryHandlerDecoratorBase&lt;TIn, TOut&gt;">
+    <Position X="20.25" Y="9.25" Width="3.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Infrastructure.CommandBase.IQuery&lt;TOut&gt;">
+    <Position X="24.75" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="Infrastructure.CommandBase.IQueryHandler&lt;TIn, TOut&gt;">
+    <Position X="19.5" Y="7.75" Width="2.25" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="Infrastructure.HandlerBase.IHandler&lt;TIn, TOut&gt;">
+    <Position X="22.5" Y="7.75" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

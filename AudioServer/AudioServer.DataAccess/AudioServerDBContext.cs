@@ -14,21 +14,12 @@ namespace AudioServer.DataAccess
         /// Default ctor
         /// </summary>
         /// <param name="options"><see cref="DbContextOptions{TContext}"/></param>
-        public AudioServerDBContext(DbContextOptions options) : base(options)
-        { }
-        
-        /// <summary>
-        /// Default ctor
-        /// </summary>
-        /// <param name="options"><see cref="DbContextOptions{TContext}"/></param>
         /// <param name="inMemory">Use inMemory DB</param>
         public AudioServerDBContext(DbContextOptions<AudioServerDBContext> options, bool inMemory = false)
             : base(options)
         {
-            if (!inMemory && Database.GetPendingMigrations().Count() > 0)
-            {
+            if (!inMemory && Database.GetPendingMigrations().Any())
                 Database.Migrate();
-            }
         }
     }
 }

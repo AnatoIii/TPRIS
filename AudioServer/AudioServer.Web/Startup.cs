@@ -16,7 +16,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AudioServer.Web
 {
@@ -95,6 +94,8 @@ namespace AudioServer.Web
                     .AllowCredentials(); // allow credentials
             });
 
+            app.UseHttpsRedirection();
+
             app.UseExceptionHandlingMiddleware();
             app.UseAuthentication();
 
@@ -104,12 +105,6 @@ namespace AudioServer.Web
             {
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
-
-            using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
-            var context = serviceScope.ServiceProvider.GetService<AudioServerDBContext>();
-
-            if (context.Database.GetPendingMigrations().Any())
-                context.Database.Migrate();
         }
     }
 }
